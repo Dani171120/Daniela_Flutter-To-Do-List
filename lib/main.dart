@@ -21,8 +21,6 @@ class ToDoList extends StatelessWidget {
 
   ToDoList({super.key});
 
-  //tasks.map((e) => Container(child: Text("Hola"))).toList()
-
   List<Task> tasks = TaskFactory().generateTask();
 
   @override
@@ -34,7 +32,7 @@ class ToDoList extends StatelessWidget {
              tooltip: 'Lista de tareas',
              onPressed: null,
           ),
-          title: const Text("Lista de tareas"),
+          title: const Text("Lista de tareas de Daniela Ceron "),
         ),
         body: Container(
           padding: const EdgeInsets.all(20),
@@ -58,7 +56,54 @@ class ToDoList extends StatelessWidget {
                 ),
               )).toList()
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => WelcomePage()),
+            );
+          },
+          tooltip: 'WBienvenido',
+          child: Icon(Icons.thumb_up),
         )
       );
   }
+}
+
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({Key? key}) : super(key: key);
+
+  @override
+  _WelcomePageState createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Hola to do list"),
+      ),
+      body: Container(
+        color: Colors.green,
+        child: Center(
+          child: Text(
+            "Segunda pantalla tarea todolist daniela",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        tooltip: 'Back',
+        child: Icon(Icons.arrow_back),
+      ),
+    );
+  }
 }
